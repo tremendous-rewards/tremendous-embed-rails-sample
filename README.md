@@ -2,13 +2,9 @@
 
 This is a sample implementation of the Tremendous Embed module within a Rails application.
 
-[View the demo here](https://www.tremendous.com/rewards/embed/demo)
-
 ### Getting Started
 
-First, to receive your api keys, sign up through the [Tremendous corporate rewards website](https://www.tremendous.com/rewards/).
-
-Within your account, you will be able to view your sandbox public key for the Embed SDK as well as the sandbox private key for the REST API.
+First, to receive your sandbox API keys, sign up through the [Tremendous sandbox](https://www.tremendous.com/rewards/).
 
 ### Configuration
 
@@ -37,10 +33,9 @@ rake catalog_update
 
 The heart of the integration is located in a combination of `rewards_controller.rb` and the associated rewards views.
 
-At a high level, most of the reward data (amount, currency, etc.) is encrypted on the back-end as a [JWT](https://jwt.io/). The JWT is passed to the embed client SDK to create a reward from the client (see `new.html.erb` for an example).
+At a high level, the backend encrypts your reward order JSON using your private API keys.  That encrypted JSON  is passed to the embed client SDK as a JWT [JWT](https://jwt.io/) to create a reward from the SDK (see `new.html.erb` for an example).  The reward must then be passed to your backend and approved via the REST API.
 
 ### Additional Documentation
 
-The Embed client documentation can be found [here](https://github.com/GiftRocket/embed)
-The API REST documentation can be found [here](https://www.tremendous.com/docs)
->>>>>>> First commit
+The Embed client documentation can be found [here](https://github.com/GiftRocket/tremendous-embed). The REST documentation can be found [here](https://www.tremendous.com/docs)
+
