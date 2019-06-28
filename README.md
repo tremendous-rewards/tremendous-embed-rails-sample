@@ -33,9 +33,9 @@ rake catalog_update
 
 The heart of the integration is located in a combination of `rewards_controller.rb` and the associated rewards views.
 
-At a high level, the backend encrypts your reward order JSON using your private API keys.  That encrypted JSON  is passed to the embed client SDK as a JWT [JWT](https://jwt.io/) to create a reward from the SDK (see `new.html.erb` for an example).  The reward must then be passed to your backend and approved via the REST API.
+At a high level, the backend encrypts your reward order JSON using your private API keys.  That encrypted JSON  is passed to the embed client SDK as a [JWT](https://jwt.io/) to create a reward via the frontend SDK (see `new.html.erb` for an example).  The reward must then be passed to your backend and approved via the REST API.
 
 ### Additional Documentation
 
-The Embed client documentation can be found [here](https://github.com/GiftRocket/tremendous-embed). The REST documentation can be found [here](https://www.tremendous.com/docs)
+The embed SDK documentation can be found [here](https://github.com/GiftRocket/tremendous-embed). The REST documentation can be found [here](https://www.tremendous.com/docs).
 
