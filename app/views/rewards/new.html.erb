@@ -1,0 +1,53 @@
+<div class="text-center my-5">
+  <p>
+    Your funds are ready. <br /> This is a demo of Tremendous Embed.
+  </p>
+
+  <div class="mt-4">
+    <button style="margin-bottom: 20px;" class="btn btn-primary" id="launchpad">
+      Claim $50
+    </button>
+
+    <div class="label--launch"><i>Launches the embedded module</i></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var client = Tremendous("<%= @public_key %>", {
+    domain: Tremendous.domains.SANDBOX
+  });
+
+  function redeem() {
+
+    var onRedemption = function (method, url, data, cbk) {
+      return $.ajax({
+        method: method,
+        url: url,
+        data: data
+      }).done(cbk);
+    };
+
+    client.reward.open(
+      "<%= @reward_token %>",
+      {
+        onLoad: function() {
+          console.log("It Loaded");
+        },
+        onExit: function() {
+          console.log("It Closed");
+        },
+        onError: function(err) {
+          console.log(err);
+        },
+        onSuccess: function(reward) {
+          request("PUT", "/rewards/<%= @reward.id %>", {
+            tremendous_id: reward.id
+          });
+        }
+      }
+    );
+  }
+
+  $("#launchpad").on("click", redeem);
+
+</script>

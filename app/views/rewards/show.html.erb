@@ -1,0 +1,52 @@
+<div class="center">
+  <div>
+    You've already redeemed this reward.
+  </div>
+
+  <div style="margin-top: 20px">
+    <button style="margin-bottom: 20px;" class="btn btn-primary" id="launchpad">
+      View Details
+    </button>
+
+    <div class="label--launch"><i>Launches the embedded module</i></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var client = Tremendous("<=% @public_key %>", {
+    domain: Tremendous.domains.SANDBOX
+  });
+
+  function redeem() {
+
+    var onRedemption = function (method, url, data, cbk) {
+      return $.ajax({
+        method: method,
+        url: url,
+        data: data
+      }).done(cbk);
+    };
+
+    client.reward.open(
+      "<%= @reward_token %>",
+      {
+        onLoad: function() {
+          console.log("It Loaded");
+        },
+        onExit: function() {
+          console.log("It Closed");
+        },
+        onError: function(err) {
+          console.log(err);
+        },
+        onSuccess: function(reward) {
+          debugger;
+          // request("POST", "/rewards", { reward: reward });
+        }
+      }
+    );
+  }
+
+  $("#launchpad").on("click", redeem);
+
+</script>
