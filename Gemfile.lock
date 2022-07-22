@@ -118,7 +118,7 @@ GEM
       activesupport (>= 3.2, <= 5.2.3)
       httparty (>= 0.14.0)
       jwt (>= 1.5.0)
-    tzinfo (1.2.5)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
